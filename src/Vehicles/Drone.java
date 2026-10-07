@@ -14,7 +14,8 @@ public class Drone extends Vehicle {
 
     @Override
     public void move() {
-        System.out.println("Дрон летит");
+        System.out.println(String.format("Дрон %s летит по воздуху, заряд батареи в процентах: %d", getId(), batteryLevel));
+        batteryLevel -= 5;
     }
 
     public int getBatteryLevel() {

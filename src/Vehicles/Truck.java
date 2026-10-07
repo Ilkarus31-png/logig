@@ -10,7 +10,7 @@ public class Truck extends Vehicle {
 
     @Override
     public void move() {
-        System.out.println("Трак едет");
+        System.out.println(String.format("Трак %s едет по дороге со скоростью 70 км/ч", getId()));
     }
 
     public boolean getHasTrailer() {

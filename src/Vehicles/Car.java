@@ -10,7 +10,7 @@ public class Car extends Vehicle{
 
     @Override
     public void move () {
-        System.out.println("Машина едет");
+        System.out.println(String.format("Машина %s едет по дороге со скоростью 90 км/ч", getId()));
     }
 
     public int getPassengerCount() {
