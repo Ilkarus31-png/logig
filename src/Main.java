@@ -3,6 +3,8 @@ package SmartLogistics.src;
 import java.util.ArrayList;
 import java.util.List;
 
+import SmartLogistics.src.Box.ITrackable;
+import SmartLogistics.src.Box.LogisticsCenter;
 import SmartLogistics.src.Vehicles.Car;
 import SmartLogistics.src.Vehicles.CargoItem;
 import SmartLogistics.src.Vehicles.Drone;
@@ -30,15 +32,18 @@ public class Main {
         System.out.println("Дрон: id=" + drone.getId()
                 + ", макс. груз=" + drone.getMaxCapacityKg()
                 + ", заряд=" + drone.getBatteryLevel());
+
+
         System.out.println("Трак: id=" + truck.getId()
                 + ", макс. груз=" + truck.getMaxCapacityKg()
                 + ", прицеп=" + truck.getHasTrailer());
+
+
         System.out.println("Машина: id=" + car.getId()
                 + ", макс. груз=" + car.getMaxCapacityKg()
                 + ", пассажиров=" + car.getPassengerCount());
 
         System.out.println();
-
 
         System.out.println();
 
@@ -76,5 +81,12 @@ public class Main {
 
         System.out.println();
         System.out.println("Заряд дрона после полёта: " + drone.getBatteryLevel());
+
+        List<ITrackable> iTrackables = new ArrayList<>();
+        iTrackables.add(truck);
+        iTrackables.add(drone);
+        
+        LogisticsCenter logisticsCenter = new LogisticsCenter();
+        logisticsCenter.dispatch(iTrackables);
     }
 }
