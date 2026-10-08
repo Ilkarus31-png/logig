@@ -3,14 +3,18 @@ package SmartLogistics.src;
 import java.util.ArrayList;
 import java.util.List;
 
+import SmartLogistics.src.Box.FragileItem;
 import SmartLogistics.src.Box.ITrackable;
 import SmartLogistics.src.Box.LogisticsCenter;
+import SmartLogistics.src.Box.StandardBox;
 import SmartLogistics.src.Vehicles.Car;
 import SmartLogistics.src.Vehicles.CargoItem;
 import SmartLogistics.src.Vehicles.Drone;
 import SmartLogistics.src.Vehicles.FleetManager;
 import SmartLogistics.src.Vehicles.Truck;
 import SmartLogistics.src.Vehicles.Vehicle;
+import SmartLogistics.src.WareHouse.Report;
+import SmartLogistics.src.WareHouse.Warehouse;
 
 public class Main {
     public static void main(String[] args) {
@@ -88,5 +92,21 @@ public class Main {
         
         LogisticsCenter logisticsCenter = new LogisticsCenter();
         logisticsCenter.dispatch(iTrackables);
+
+        Warehouse<StandardBox> warehouseStandart = new Warehouse<>();
+        Warehouse<FragileItem> warehouseFragile = new Warehouse<>();
+
+        FragileItem fragileItem = new FragileItem("f_1", "Mug",
+        25, true);
+
+        //warehouse_standart.addItem(fragileItem);
+        // тут ошибка потому что хоть стандарт бокс у нас реализует тот же метод,
+        // но он принимает только стандарт бокс, потому что фраджил итем абсолютно другой тип
+
+        Report<Warehouse<StandardBox>> reportStandart = new Report<>(warehouseStandart);
+        Report<Warehouse<FragileItem>> reportFragile = new Report<>(warehouseFragile);
+
+        reportStandart.printReport();
+        reportFragile.printReport();
     }
 }
